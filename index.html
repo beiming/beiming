@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>圣僧专用页</title>
+<script type="text/javascript" src="source/jquery-1.5.1.min.js"></script>
+<style>
+#main{
+	position:absolute;
+	top:20px;
+	left:400px;
+	border:1px solid #333333;
+	width:490px;
+	height:628px;
+	text-align:center;
+	background-image:url(source/mei.jpg);
+}
+#debug{
+	position:absolute;
+	left:20px;
+	top:150px;
+}
+#release
+{
+	position:absolute;
+	left:333px;
+	top:163px;
+}
+#year2012
+{
+	position:absolute;
+	left:210px;
+	top:20px;
+	color:#FFFFFF;
+	font-weight:bold;
+	font-size:30px;
+	cursor:pointer;
+}
+#move
+{
+	position:absolute;
+	left:0px;
+	top:0px;
+	display:none
+}
+</style>
+<script language="javascript">
+function showImg(obj)
+{
+	var url = '';
+	$('#move').show();	
+	var pos = $(obj).position();
+	var move = document.getElementById('move');
+	var x = 0;
+	var y = 0;	
+	if($(obj).attr('id') == 'debug')
+	{
+		url = 'source/tang.jpg';
+		x = pos.left - $('#move').width();
+		y = pos.top;
+	}
+	else if($(obj).attr('id') == 'release')
+	{
+		url = 'source/zhou.jpg';
+		x = pos.left + 50;
+		y = pos.top;
+	}
+	else
+	{
+		url = 'source/seng.jpg';
+		x = pos.left - 180;
+		y = pos.top + 30;
+	}
+	
+	move.style.left = x  + 'px';
+	move.style.top = y + 'px';
+	$('#img').attr('src',url);		
+}
+function hideImg()
+{
+	$('#move').hide();
+}
+</script>
+</head>
+
+<body>
+<div id="main">
+	<div id="debug" onmouseover="showImg(this)" onmouseout="hideImg()"><a href="bin-debug/GameSDK.html">Debug</a></div>
+	<div id="release" onmouseover="showImg(this)" onmouseout="hideImg()"><a href="bin-release/GameSDK.html">Release</a></div>
+	<div id="year2012" onmouseover="showImg(this)" onmouseout="hideImg()">2012</div>
+	<div id="move"><img id="img" src="source/tang.jpg" /></div>
+</div>
+
+<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0" width="0" height="0">
+<param name="movie" value="source/nverqing.swf">
+<param name="quality" value="high">
+<embed src="source/nverqing.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="0" height="0"></embed>
+</object>
+
+</body>
+</html>
